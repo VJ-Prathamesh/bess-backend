@@ -95,6 +95,8 @@ Then open:
 
 # BESS Backend - Module File Guide
 
+complete flow of module 
+
 Each module folder (e.g. /projects, /load_profile) contains 6 files:
 
 - **router.py** — Defines the API routes (URL + method). Receives the 
@@ -117,3 +119,27 @@ Each module folder (e.g. /projects, /load_profile) contains 6 files:
   Can reference other modules' tables via ForeignKey.
 
 Flow: router.py → service.py → (calculation.py + repository.py) → back up
+
+
+
+
+## Local Data Storage (temporary — no real DB yet)
+
+### Migrating to a real DB later
+When we move to PostgreSQL, only `repository.py` in each module 
+needs to change (JSON read/write → SQL queries via SQLAlchemy). 
+`router.py`, `service.py`, `schemas.py`, and `calculation.py` stay 
+untouched, since they don't know or care how data is stored.
+
+
+
+
+
+**BRUNO Setup**
+
+1. Click **Open Collection**. in Bruno
+2. Select the `bruno/` folder from the project root.
+3. The collection will be loaded automatically.
+4. Start the Backend.
+5. Hit the URL with proper JSON Data Format.
+

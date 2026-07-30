@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+# from app.modules.projects.router import router as projects_router
 
 
 from app.modules.load_profile.router import router

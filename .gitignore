@@ -25,3 +25,6 @@ htmlcov/
 
 # Logs
 *.log
+
+app/db_store/
+app/modules/projects
