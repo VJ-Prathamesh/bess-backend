@@ -90,3 +90,30 @@ Then open:
 
 - The current application entrypoint is app.main:app.
 - The root endpoint returns a simple welcome message.
+
+
+
+# BESS Backend - Module File Guide
+
+Each module folder (e.g. /projects, /load_profile) contains 6 files:
+
+- **router.py** — Defines the API routes (URL + method). Receives the 
+  HTTP request, calls service.py, returns the response. No logic here.
+
+- **schemas.py** — Pydantic classes. Validates incoming request JSON 
+  and defines outgoing response shape. Rejects bad input automatically.
+
+- **service.py** — The orchestrator. Called by router.py. Decides 
+  what needs to happen (call calculation.py for math, call 
+  repository.py for DB), combines results, returns to router.py.
+
+- **calculation.py** — Pure formulas only (sizing math, ampacity, 
+  DoD, etc). No DB, no HTTP. Easiest file to unit test.
+
+- **repository.py** — All DB queries (SELECT/INSERT/UPDATE/DELETE) 
+  live here only. service.py never talks to the DB directly.
+
+- **models.py** — SQLAlchemy table definition for this module. 
+  Can reference other modules' tables via ForeignKey.
+
+Flow: router.py → service.py → (calculation.py + repository.py) → back up
