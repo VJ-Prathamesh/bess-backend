@@ -95,6 +95,8 @@ Then open:
 
 # BESS Backend - Module File Guide
 
+complete flow of module 
+
 Each module folder (e.g. /projects, /load_profile) contains 6 files:
 
 - **router.py** — Defines the API routes (URL + method). Receives the 
