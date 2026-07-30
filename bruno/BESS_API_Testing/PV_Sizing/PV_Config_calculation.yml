@@ -1,0 +1,57 @@
+info:
+  name: PV_Config_calculation
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/projects/1/pv-config"
+  body:
+    type: json
+    data: |
+      {
+        "pv_module_id": 3,
+        "modules_per_string": 8,
+        "number_of_strings": 1,
+        "inverter": {
+          "manufacturer": "Sungrow",
+          "model_name": "SG5.0RT-P2 - 5.0kW",
+          "quantity": 1,
+          "ac_power_kw": 5.0,
+          "max_dc_power_kw": 5.5,
+          "mppt_min_voltage_v": 160,
+          "mppt_max_voltage_v": 640,
+          "max_dc_voltage_v": 1000,
+          "mppt_input_count": 2,
+          "strings_per_mppt": 1,
+          "max_dc_input_current_a": 30
+        },
+        "site_conditions": {
+          "min_temperature_c": -10,
+          "max_temperature_c": 60
+        },
+        "energy_design": {
+          "daily_energy_kwh": 28.5426,
+          "peak_sun_hours": 5.91,
+          "performance_ratio": 0.85,
+          "safety_margin_pct": 10
+        },
+        "scorecard": {
+          "bess_capacity_kwh": 14.3,
+          "coupling_type": "AC Coupled"
+        },
+        "mounting": {
+          "mounting_type": "Ground-mount",
+          "modules_per_row": 8,
+          "rows_per_table": 1,
+          "total_tables": 1,
+          "module_orientation": "Portrait"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

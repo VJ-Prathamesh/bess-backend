@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 # from app.modules.projects.router import router as projects_router
-
-
+from app.modules.pv_sizing.router import router as pv_sizing_router
 from app.modules.load_profile.router import router
-
 from app.modules.design_assist.router import router as design_router
 
 
@@ -21,6 +19,9 @@ def home():
 
 
 
+
+app.include_router(pv_sizing_router)
+
 app.include_router(
     router,
     prefix="/load-profile",
@@ -34,3 +35,4 @@ app.include_router(
     prefix="/design-assist",
     tags=["Design Assist"]
 )
+
