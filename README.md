@@ -117,3 +117,28 @@ Each module folder (e.g. /projects, /load_profile) contains 6 files:
   Can reference other modules' tables via ForeignKey.
 
 Flow: router.py → service.py → (calculation.py + repository.py) → back up
+
+
+
+## Local Data Storage (temporary — no real DB yet)
+
+This project currently does NOT use a real database. Data is stored 
+locally in plain JSON files under `app/db_store/`, one file per module 
+(e.g. `app/db_store/projects.json`).
+
+- Each module's `repository.py` reads/writes its own JSON file directly.
+- Data resets only if the JSON file is deleted — it persists across 
+  server restarts, but is NOT shared between developers (each person 
+  has their own local file).
+- IDs are auto-incremented manually inside `repository.py`.
+- This is intentional for now: it lets us build and test the API 
+  and calculation logic in Postman without waiting on real DB setup.
+
+### Migrating to a real DB later
+When we move to PostgreSQL, only `repository.py` in each module 
+needs to change (JSON read/write → SQL queries via SQLAlchemy). 
+`router.py`, `service.py`, `schemas.py`, and `calculation.py` stay 
+untouched, since they don't know or care how data is stored.
+
+Do not commit `app/db_store/*.json` files to git — they're local 
+test data only. Add `app/db_store/` to `.gitignore`.
