@@ -28,3 +28,8 @@ htmlcov/
 
 app/db_store/
 app/modules/projects
+app/modules/pv_sizing/dummy_pv_config.json
+app/modules/pv_sizing/API_FLOW.md
+/images
+/current_task
+

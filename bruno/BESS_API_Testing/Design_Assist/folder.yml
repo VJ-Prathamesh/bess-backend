@@ -1,0 +1,7 @@
+info:
+  name: Design_Assist
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

@@ -142,3 +142,17 @@ untouched, since they don't know or care how data is stored.
 
 Do not commit `app/db_store/*.json` files to git — they're local 
 test data only. Add `app/db_store/` to `.gitignore`.
+
+
+
+**BRUNO Setup**
+
+1. Click **Open Collection**. in Bruno
+2. Select the `bruno/` folder from the project root.
+3. The collection will be loaded automatically.
+4. Start the Backend.
+5. Hit the URL with proper JSON Data Format.
+
+
+
+
