@@ -1,12 +1,35 @@
 from fastapi import FastAPI
 
-app = FastAPI(
-    title="BESS Backend",
-    version="1.0.0"
-)
+
+from app.modules.load_profile.router import router
+
+from app.modules.design_assist.router import router as design_router
+
+
+
+app = FastAPI()
+
+
 
 @app.get("/")
-def root():
+def home():
+
     return {
-        "message": "Welcome to BESS Backend"
+        "message":"BESS Backend Running"
     }
+
+
+
+app.include_router(
+    router,
+    prefix="/load-profile",
+    tags=["Load Profile"]
+)
+
+
+
+app.include_router(
+    design_router,
+    prefix="/design-assist",
+    tags=["Design Assist"]
+)
