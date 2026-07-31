@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Projects Module - SQLAlchemy Models
 """
@@ -31,3 +32,21 @@ class Project(Base):
         DateTime,
         default=datetime.utcnow,
     )
+=======
+from typing import TypedDict
+
+
+class Project(TypedDict):
+
+    project_id: str
+
+    project_name: str
+
+    location_name: str
+
+    application_type: str
+
+    charging_source: str
+
+    current_step: int
+>>>>>>> fb7a2c0 (Implemented project details and location weather APIs)
