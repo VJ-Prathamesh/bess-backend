@@ -6,6 +6,28 @@ info:
 http:
   method: POST
   url: "{{baseUrl}}/projects/1/simulation/run"
+  body:
+    type: json
+    data: |
+      {
+        "pv": {
+          "capacity_kwp": 100.0,
+          "average_sun_hours": 5.5,
+          "performance_ratio": 0.80
+        },
+        "battery": {
+          "capacity_kwh": 200.0,
+          "depth_of_discharge": 0.85,
+          "round_trip_efficiency": 0.92
+        },
+        "load": {
+          "daily_energy_kwh": 450.0,
+          "peak_load_kw": 60.0
+        },
+        "losses": {
+          "total_system_losses_pct": 12.5
+        }
+      }
   auth: inherit
 
 settings:

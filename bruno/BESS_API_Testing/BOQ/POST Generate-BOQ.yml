@@ -6,6 +6,46 @@ info:
 http:
   method: POST
   url: "{{baseUrl}}/projects/1/boq/generate"
+  body:
+    type: json
+    data: |
+      {
+        "project": {
+          "project_id": 1,
+          "project_name": "BESS Project #1",
+          "location": "Solar Field Zone A"
+        },
+        "load_profile": {
+          "daily_energy_kwh": 450.0,
+          "peak_load_kw": 60.0
+        },
+        "bess_config": {
+          "battery_capacity_kwh": 200.0,
+          "battery_chemistry": "LFP",
+          "rack_quantity": 4,
+          "pcs_rating_kw": 100.0
+        },
+        "pv_sizing": {
+          "pv_capacity_kwp": 100.0,
+          "pv_module_wattage_w": 550.0,
+          "pv_module_count": 182,
+          "mounting_type": "Ground Mounted Fixed Tilt"
+        },
+        "cable_sizing": {
+          "dc_cable_length_m": 500.0,
+          "dc_cable_sqmm": 6.0,
+          "ac_cable_length_m": 120.0,
+          "ac_cable_sqmm": 95.0,
+          "cable_tray_length_m": 150.0
+        },
+        "system_losses": {
+          "dcdb_quantity": 2,
+          "acdb_quantity": 1
+        },
+        "simulation": {
+          "annual_pv_generation_kwh": 158400.0
+        }
+      }
   auth: inherit
 
 settings:
