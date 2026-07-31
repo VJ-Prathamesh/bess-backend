@@ -1,0 +1,15 @@
+info:
+  name: POST Generate-BOQ
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/projects/1/boq/generate"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

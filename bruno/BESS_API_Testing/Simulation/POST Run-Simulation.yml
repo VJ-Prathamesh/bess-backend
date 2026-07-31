@@ -1,0 +1,15 @@
+info:
+  name: POST Run-Simulation
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/projects/1/simulation/run"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
